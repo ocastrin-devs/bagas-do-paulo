@@ -1,0 +1,155 @@
+/* 1. CONFIGURAÇÕES GERAIS (As cores "sedosas") */
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #F0F4F8; /* Azul-gelo suave para não cegar no escuro */
+    color: #102A43; /* Azul marinho profundo para o texto */
+}
+
+/* 2. OS CARDS (As seções explicativas) */
+section {
+    background: #FFFFFF;
+    margin-bottom: 25px;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #D9E2EC;
+    border-left: 6px solid #007acc; /* Detalhe lateral elegante */
+    
+    /* Transição suave para o efeito de "vir pra frente" */
+    transition: all 0.3s ease-in-out; 
+    cursor: default;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* 3. O EFEITO "MUSCULOSO" (Interatividade) */
+section:hover {
+    transform: translateY(-8px) scale(1.01); /* Sobe um pouco mais */
+    box-shadow: 0 15px 30px rgba(0, 122, 204, 0.15); /* Sombra azulada e macia */
+    border-color: #007acc;
+    background-color: #f8fbff; /* Muda levemente a cor do card no hover */
+}
+
+/* 4. TÍTULOS */
+h1 {
+    text-align: center;
+    color: #102A43;
+    margin-bottom: 40px;
+}
+
+h2 {
+    color: #007acc;
+    margin-top: 0;
+    font-size: 1.5rem;
+    border-bottom: 2px solid #eef2f7;
+    padding-bottom: 5px;
+    display: block; /* Ocupa a largura toda para ficar mais moderno */
+}
+
+/* 5. O SIMULADOR (Visual Tech/Terminal) */
+#terminal {
+    background-color: #243B53; /* Azul bem escuro (foco total aqui) */
+    color: #BCCCDC;
+    font-family: 'Fira Code', 'Courier New', Courier, monospace;
+    border-left: 6px solid #48BB78; /* Começa com verde de "Online" */
+    padding: 30px;
+}
+
+#terminal h2 {
+    color: #9FB3C8;
+    border-bottom: 1px solid #334E68;
+}
+
+#terminal button {
+    background: #007acc;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background 0.2s;
+    margin-top: 15px;
+}
+
+#terminal button:hover {
+    background: #005a9e;
+}
+
+/* 6. ANIMAÇÕES */
+@keyframes pulsar {
+    0% { opacity: 1; text-shadow: 0 0 5px rgba(72, 187, 120, 0.5); }
+    50% { opacity: 0.6; text-shadow: 0 0 15px rgba(72, 187, 120, 0.8); }
+    100% { opacity: 1; text-shadow: 0 0 5px rgba(72, 187, 120, 0.5); }
+}
+
+/* Status Verde Vibrante (Normal) */
+#server-state {
+    color: #2ecc71; /* Verde bem vivo */
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+/* O "Quadrado" do Servidor (Terminal) */
+#terminal {
+    background-color: #243B53;
+    color: #BCCCDC;
+    padding: 30px;
+    border-radius: 12px;
+    border-left: 8px solid #2ecc71;
+    transition: all 0.3s ease; /* Para a mudança de cor ser suave */
+}
+
+/* CLASSE DE ERRO (O JS vai ativar isso) */
+.server-error {
+    background-color: #7f1d1d !important; /* Vermelho intenso */
+    border-left-color: #ff4d4d !important;
+}
+
+.server-error #server-state {
+    color: #ff4d4d !important;
+    animation: pulsar-alerta 0.8s infinite; /* Pulsar rápido de erro */
+}
+
+/* Animação de Alerta (Pulsar o texto e um pouco de brilho) */
+@keyframes pulsar-alerta {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.05); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+textarea {
+    width: 100%;
+    height: 80px;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid #D9E2EC;
+    font-family: inherit;
+    resize: none; /* Trava o tamanho para não quebrar o layout */
+    display: block;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #007acc;
+    background-color: #f0f7ff;
+}
+
+.feedback {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+button {
+    margin-top: 10px;
+    padding: 8px 15px;
+    background-color: #007acc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabalho: HTTP e HTTPS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://fav.farm/🌐"> 
+</head>
+<body>
+
+    <header>
+        <h1>Entendendo a Web: HTTP vs HTTPS</h1>
+    </header>
+
+    <main>
+        <section id="sec-http">
+            <h2>O que é HTTP?</h2>
+            <textarea id="input-http" placeholder="O que você sabe sobre HTTP? Digite aqui..."></textarea>
+            <button onclick="verificarResposta('http')">Verificar Resposta</button>
+            <p id="feedback-http" class="feedback"></p>
+        </section>
+
+        <section id="sec-https">
+            <h2>O que é HTTPS?</h2>
+            <textarea id="input-https" placeholder="E o HTTPS, o que ele tem de diferente?"></textarea>
+            <button onclick="verificarResposta('https')">Verificar Resposta</button>
+            <p id="feedback-https" class="feedback"></p>
+        </section>
+
+        <section>
+            <h2>Cliente</h2>
+            <p>O cliente é qualquer dispositivo ou programa (como o seu navegador Chrome ou Edge) que solicita dados a um servidor através de uma rede. Ele é a ponta que "pede" a informação.</p>
+        </section>
+
+        <section>
+            <h2>Servidor</h2>
+            <p>O servidor é um computador robusto que armazena os arquivos do site e "serve" essas informações quando o cliente faz um pedido. Ele fica aguardando requisições 24h por dia.</p>
+        </section>
+
+        <section id="terminal">
+            <h2>Status do Sistema</h2>
+            <p>Status HTTP: <span id="status-code">200</span></p>
+            <p>Estado do Servidor: <span id="server-state">Online</span></p>
+            
+            <small>Atenção: Movimentos bruscos do mouse podem sobrecarregar o sistema.</small>
+            <br><br>
+            <button onclick="resetarServidor()">Reiniciar Servidor</button>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
