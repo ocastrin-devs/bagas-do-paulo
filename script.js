@@ -70,3 +70,156 @@ function verificarResposta(tipo) {
         feedback.style.color = "#ff4d4d";
     }
 }
+
+function iniciarSite() {
+    const intro = document.getElementById('intro-screen');
+    intro.style.opacity = '0';
+    setTimeout(() => {
+        intro.classList.add('hidden');
+    }, 800);
+}
+
+function abrirConfigs() {
+    document.getElementById('config-panel').classList.remove('hidden');
+}
+
+function fecharConfigs() {
+    document.getElementById('config-panel').classList.add('hidden');
+}
+
+function mudarTema() {
+    const tema = document.getElementById('theme-selector').value;
+    const body = document.body;
+
+    if (tema === 'purple') {
+        body.style.backgroundColor = '#2d1b4e';
+        body.style.color = '#e0b3ff';
+        // Você pode adicionar mais mudanças de cores aqui
+    } else if (tema === 'dark') {
+        body.style.backgroundColor = '#0d1117';
+        body.style.color = '#c9d1d9';
+    } else {
+        body.style.backgroundColor = '#F0F4F8';
+        body.style.color = '#102A43';
+    }
+}
+
+function mudarTema() {
+    const tema = document.getElementById('theme-selector').value;
+    const body = document.body;
+    const terminal = document.getElementById('terminal');
+
+    if (tema === 'purple') {
+        // TEMA CYBER PURPLE
+        body.style.backgroundColor = '#2d1b4e';
+        body.style.color = '#e0b3ff';
+        
+        terminal.style.backgroundColor = '#1a0b2e'; // Roxo mais profundo
+        terminal.style.borderColor = '#00f3ff';     // Borda Ciano (Neon)
+        terminal.style.color = '#00f3ff';
+        
+    } else if (tema === 'dark') {
+        // TEMA DEEP MODE (Preto)
+        body.style.backgroundColor = '#0d1117';
+        body.style.color = '#c9d1d9';
+        
+        terminal.style.backgroundColor = '#161b22';
+        terminal.style.borderColor = '#f0883e';     // Laranja (tipo as notificações do Watch Dogs)
+        terminal.style.color = '#f0883e';
+        
+    } else {
+        // TEMA OCEAN (Padrão claro)
+        body.style.backgroundColor = '#F0F4F8';
+        body.style.color = '#102A43';
+        
+        terminal.style.backgroundColor = '#243B53';
+        terminal.style.borderColor = '#48BB78';     // Verde Online
+        terminal.style.color = '#BCCCDC';
+    }
+}
+
+// Abre o overlay
+function abrirConfigs() {
+    document.getElementById('config-overlay').classList.remove('hidden');
+}
+
+// Fecha o overlay
+function fecharConfigs() {
+    document.getElementById('config-overlay').classList.add('hidden');
+}
+
+// Lógica de fechar ao clicar fora (no fundo escuro)
+function fecharAoClicarFora(event) {
+    const overlay = document.getElementById('config-overlay');
+    // Se o alvo do clique for o fundo (overlay) e não o painel interno
+    if (event.target === overlay) {
+        fecharConfigs();
+    }
+}
+
+// Botão para voltar para a Intro
+function voltarParaIntro() {
+    fecharConfigs(); // Fecha o painel primeiro
+    const intro = document.getElementById('intro-screen');
+    intro.classList.remove('hidden'); // Faz a intro aparecer
+    setTimeout(() => {
+        intro.style.opacity = '1'; // Suaviza a volta da intro
+    }, 10);
+}
+
+function iniciarSite() {
+    const intro = document.getElementById('intro-screen');
+    const btnConfig = document.getElementById('btn-config-flutuante');
+    
+    intro.style.opacity = '0';
+    setTimeout(() => {
+        intro.classList.add('hidden');
+        btnConfig.classList.remove('hidden'); // O botão de engrenagem aparece aqui!
+    }, 800);
+}
+
+function voltarParaIntro() {
+    fecharConfigs();
+    const intro = document.getElementById('intro-screen');
+    const btnConfig = document.getElementById('btn-config-flutuante');
+    
+    btnConfig.classList.add('hidden'); // Esconde a engrenagem ao voltar pra intro
+    intro.classList.remove('hidden');
+    setTimeout(() => {
+        intro.style.opacity = '1';
+    }, 10);
+}
+
+const dadosCreditos = {
+    criador: {
+        titulo: "CRIADOR_DO_SISTEMA",
+        nomes: ["Marcus (Retr0) - Lead Developer"]
+    },
+    equipe: {
+        titulo: "PARCEIROS_DE_EQUIPE",
+        nomes: ["Nome do Amigo 1 - Ideias", "Nome do Amigo 2 - Design", "Nome do Amigo 3 - Pesquisa"]
+    }
+};
+
+function abrirCreditos(tipo) {
+    const modal = document.getElementById('modal-creditos');
+    const titulo = document.getElementById('titulo-creditos');
+    const lista = document.getElementById('lista-creditos');
+    
+    // Limpa a lista antes de preencher
+    lista.innerHTML = "";
+    
+    // Puxa os dados do objeto acima
+    titulo.innerText = dadosCreditos[tipo].titulo;
+    dadosCreditos[tipo].nomes.forEach(nome => {
+        const p = document.createElement('p');
+        p.innerText = "> " + nome;
+        lista.appendChild(p);
+    });
+    
+    modal.classList.remove('hidden');
+}
+
+function fecharCreditos() {
+    document.getElementById('modal-creditos').classList.add('hidden');
+}

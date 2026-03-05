@@ -9,6 +9,81 @@
 </head>
 <body>
 
+    <button id="btn-config-flutuante" onclick="abrirConfigs()">
+        ⚙️ Configurações
+    </button>
+    
+    <div id="config-overlay" class="hidden" onclick="fecharAoClicarFora(event)">
+        <div id="config-panel">
+            <h3>Ajustes do Sistema</h3>
+            <label>Alterar Tema:</label>
+            <select id="theme-selector" onchange="mudarTema()">
+                <option value="ocean">Tech Ocean</option>
+                <option value="purple">Cyber Purple</option>
+                <option value="dark">Deep Mode</option>
+            </select>
+            <div class="config-footer">
+                <button onclick="voltarParaIntro()">Sair para o Menu</button>
+                <button onclick="fecharConfigs()">Voltar ao Trabalho</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="intro-screen">
+        <div class="intro-content">
+            <h1 class="glitch">NET_OVERRIDE_</h1>
+            <p>Sistema de Protocolos HTTP/HTTPS v1.0</p>
+            
+            <div class="credits-menu">
+                <button class="btn-small" onclick="abrirCreditos('criador')"> [ CRIADOR ] </button>
+                <button class="btn-small" onclick="abrirCreditos('equipe')"> [ EQUIPE ] </button>
+            </div>
+    
+            <div class="menu-buttons">
+                <button onclick="iniciarSite()">[ INICIAR_SESSÃO ]</button>
+                <button onclick="abrirConfigs()">[ CONFIGURAÇÕES ]</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="modal-creditos" class="hidden" onclick="fecharAoClicarFora(event)">
+        <div class="modal-content">
+            <h2 id="titulo-creditos"></h2>
+            <div id="lista-creditos"></div>
+            <button onclick="fecharCreditos()" class="btn-close">FECHAR_</button>
+        </div>
+    </div>
+    
+    <div id="config-panel" class="hidden">
+        <div class="config-content">
+            <h3>Painel de Controle</h3>
+            <label>Cor do Tema:</label>
+            <select id="theme-selector" onchange="mudarTema()">
+                <option value="ocean">Tech Ocean (Padrão)</option>
+                <option value="purple">Cyber Purple</option>
+                <option value="dark">Deep Mode</option>
+            </select>
+            <button onclick="fecharConfigs()">Fechar</button>
+        </div>
+    </div>
+
+    <div id="config-overlay" class="hidden" onclick="fecharAoClicarFora(event)">
+        <div id="config-panel">
+            <h3>Painel de Controle</h3>
+            
+            <label>Cor do Tema:</label>
+            <select id="theme-selector" onchange="mudarTema()">
+                <option value="ocean">Tech Ocean (Padrão)</option>
+                <option value="purple">Cyber Purple</option>
+                <option value="dark">Deep Mode</option>
+            </select>
+    
+            <div class="config-footer">
+                <button onclick="voltarParaIntro()">Sair do Sistema</button>
+                <button onclick="fecharConfigs()">Fechar</button>
+            </div>
+        </div>
+    </div>
     <header>
         <h1>Entendendo a Web: HTTP vs HTTPS</h1>
     </header>
