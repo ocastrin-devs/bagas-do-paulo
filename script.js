@@ -99,46 +99,79 @@ function mudarTema() {
     const tema = document.getElementById('theme-selector').value;
     const body = document.body;
     const terminal = document.getElementById('terminal');
-    const headerTitle = document.querySelector('header h1'); // Seleciona o título principal
+    const headerTitle = document.querySelector('header h1');
+    const sections = document.querySelectorAll('main section');
+    const textareas = document.querySelectorAll('textarea'); // Pega todas as caixas de resposta
 
     if (tema === 'purple') {
-        // TEMA CYBER PURPLE
         body.style.backgroundColor = '#2d1b4e';
         body.style.color = '#e0b3ff';
+        headerTitle.style.color = '#00f3ff';
+        headerTitle.style.textShadow = "0 0 15px #00f3ff";
         
         terminal.style.backgroundColor = '#1a0b2e';
         terminal.style.borderColor = '#00f3ff';
         terminal.style.color = '#00f3ff';
 
-        // Destaque Vibrante para o Título no Roxo
-        headerTitle.style.color = '#00f3ff'; // Ciano Neon
-        headerTitle.style.textShadow = "0 0 15px #00f3ff";
-        
+        sections.forEach(sec => {
+            sec.style.backgroundColor = '#1a0b2e';
+            sec.style.borderLeft = '5px solid #00f3ff';
+            sec.style.color = '#e0b3ff';
+        });
+
+        // Caixa de texto: Roxo bem escuro e opaco
+        textareas.forEach(txt => {
+            txt.style.backgroundColor = '#0d051a'; 
+            txt.style.color = '#e0b3ff';
+            txt.style.border = '1px solid #4a3070';
+        });
+
     } else if (tema === 'dark') {
-        // TEMA DEEP MODE (Preto)
         body.style.backgroundColor = '#0d1117';
         body.style.color = '#c9d1d9';
-        
+        headerTitle.style.color = '#f0883e';
+        headerTitle.style.textShadow = "0 0 15px #f0883e";
+
         terminal.style.backgroundColor = '#161b22';
         terminal.style.borderColor = '#f0883e';
         terminal.style.color = '#f0883e';
 
-        // Destaque Vibrante para o Título no Preto
-        headerTitle.style.color = '#f0883e'; // Laranja Hacker
-        headerTitle.style.textShadow = "0 0 15px #f0883e";
-        
+        sections.forEach(sec => {
+            sec.style.backgroundColor = '#161b22';
+            sec.style.borderLeft = '5px solid #f0883e';
+            sec.style.color = '#c9d1d9';
+        });
+
+        // Caixa de texto: Cinza chumbo (quase preto)
+        textareas.forEach(txt => {
+            txt.style.backgroundColor = '#010409';
+            txt.style.color = '#c9d1d9';
+            txt.style.border = '1px solid #30363d';
+        });
+
     } else {
-        // TEMA OCEAN (Padrão claro)
+        // TEMA OCEAN (Padrão)
         body.style.backgroundColor = '#F0F4F8';
         body.style.color = '#102A43';
-        
+        headerTitle.style.color = '#102A43';
+        headerTitle.style.textShadow = "none";
+
         terminal.style.backgroundColor = '#243B53';
         terminal.style.borderColor = '#48BB78';
         terminal.style.color = '#BCCCDC';
 
-        // Cor original para o tema claro
-        headerTitle.style.color = '#102A43';
-        headerTitle.style.textShadow = "none";
+        sections.forEach(sec => {
+            sec.style.backgroundColor = '#ffffff';
+            sec.style.borderLeft = '5px solid #48BB78';
+            sec.style.color = '#102A43';
+        });
+
+        // Caixa de texto: Branca padrão
+        textareas.forEach(txt => {
+            txt.style.backgroundColor = '#ffffff';
+            txt.style.color = '#102A43';
+            txt.style.border = '1px solid #cbd5e0';
+        });
     }
 }
 
