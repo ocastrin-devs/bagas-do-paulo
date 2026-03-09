@@ -1,7 +1,7 @@
 console.log("Ficou uma bosta");
 let mouseMoves = 0;
 let isOffline = false;
-
+// NÃO MEXER NA PORRA DO JAVASCRIPT NEM NO HTML ATÉ EU LEMBRAR O QUE FAZERKKKKKKKKKK
 // Seleciona os elementos da sua página (vamos criar esses IDs no HTML já já)
 const statusElement = document.getElementById('status-code');
 const serverElement = document.getElementById('server-state');
@@ -206,20 +206,57 @@ function abrirCreditos(tipo) {
     const titulo = document.getElementById('titulo-creditos');
     const lista = document.getElementById('lista-creditos');
     
-    // Limpa a lista antes de preencher
     lista.innerHTML = "";
-    
-    // Puxa os dados do objeto acima
-    titulo.innerText = dadosCreditos[tipo].titulo;
-    dadosCreditos[tipo].nomes.forEach(nome => {
-        const p = document.createElement('p');
-        p.innerText = "> " + nome;
-        lista.appendChild(p);
-    });
-    
+    if(tipo === 'criador') {
+        titulo.innerText = "CRIADOR_DO_SISTEMA";
+        lista.innerHTML = "<p>> Marcus (Retr0)</p>";
+    } else {
+        titulo.innerText = "PARCEIROS_DE_EQUIPE";
+        lista.innerHTML = "<p>> Amigo 1</p><p>> Amigo 2</p>";
+    }
     modal.classList.remove('hidden');
 }
 
 function fecharCreditos() {
     document.getElementById('modal-creditos').classList.add('hidden');
+}
+
+function fecharAoClicarFora(event) {
+    // Fecha o modal de créditos ou o de config se clicar no fundo escuro
+    if (event.target.id === 'modal-creditos') fecharCreditos();
+    if (event.target.id === 'config-overlay') fecharConfigs();
+}
+
+function mostrarMenuDinamico(tipo) {
+    const barraTopo = document.getElementById('barra-topo-creditos');
+    const principal = document.getElementById('conteudo-principal');
+    const creditos = document.getElementById('conteudo-creditos');
+    const titulo = document.getElementById('titulo-dinamico');
+    const lista = document.getElementById('lista-dinamica');
+
+    // ESCONDE TUDO: Barra do topo e Menu central
+    barraTopo.classList.add('hidden');
+    principal.classList.add('hidden');
+    
+    // MOSTRA A PÁGINA LIMPA
+    creditos.classList.remove('hidden');
+
+    if (tipo === 'criador') {
+        titulo.innerText = "SISTEMA_OWNER: IDENTIFIED";
+        lista.innerHTML = "<p>> MARCUS (RETR0)</p><p>> DEVELOPER & STUDENT</p>"; //
+    } else {
+        titulo.innerText = "NETWORK_COLABORATORS";
+        lista.innerHTML = "<p>> PARCEIRO_01</p><p>> PARCEIRO_02</p>";
+    }
+}
+
+function voltarAoMenuPrincipal() {
+    const barraTopo = document.getElementById('barra-topo-creditos');
+    const principal = document.getElementById('conteudo-principal');
+    const creditos = document.getElementById('conteudo-creditos');
+
+    // VOLTA TUDO AO NORMAL
+    creditos.classList.add('hidden');
+    barraTopo.classList.remove('hidden');
+    principal.classList.remove('hidden');
 }

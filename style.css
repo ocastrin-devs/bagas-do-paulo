@@ -309,3 +309,95 @@ button {
     cursor: pointer;
     font-weight: bold;
 }
+
+.top-credits-bar {
+    position: absolute;
+    top: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    z-index: 10001;
+}
+
+.btn-top-credit {
+    background: transparent;
+    border: none;
+    color: #00ff00;
+    font-family: 'Courier New', monospace;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+    opacity: 0.6;
+    transition: 0.3s;
+    letter-spacing: 2px;
+}
+
+.btn-top-credit:hover {
+    opacity: 1;
+    text-shadow: 0 0 10px #00ff00;
+    transform: scale(1.1);
+}
+
+.btn-voltar-menu {
+    position: absolute;
+    top: -50px; /* Sobe ele um pouco para não bater no título */
+    left: 0;
+    background: transparent;
+    border: 1px solid #00ff00;
+    color: #00ff00;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    transition: 0.3s;
+}
+
+.btn-voltar-menu:hover {
+    background: #00ff00;
+    color: black;
+}
+
+#menu-dinamico {
+    position: relative; /* Para o botão de voltar se alinhar a ele */
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.lista-hacker p {
+    font-size: 1.2rem;
+    margin: 10px 0;
+    color: #00ff00;
+    text-shadow: 0 0 5px #00ff00;
+}
+
+/* Botão de voltar isolado no canto da tela toda */
+.btn-voltar-fixo {
+    position: fixed;
+    top: 25px;
+    right: 35px;
+    background: transparent;
+    border: 1px solid #ff4d4d; /* Vermelho para dar destaque de 'saída' */
+    color: #ff4d4d;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    z-index: 10005;
+    transition: 0.3s;
+}
+
+.btn-voltar-fixo:hover {
+    background: #ff4d4d;
+    color: #000;
+    box-shadow: 0 0 15px #ff4d4d;
+}
+
+/* Garante que a lista fique bem centralizada e grande na tela toda */
+.lista-hacker {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+}
