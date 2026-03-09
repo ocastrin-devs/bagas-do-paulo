@@ -1,4 +1,5 @@
 console.log("Ficou uma bosta");
+console.warn("ACESSO RESTRITO: Perfil do Administrador Retr0 carregado.");
 let mouseMoves = 0;
 let isOffline = false;
 // NÃO MEXER NA PORRA DO JAVASCRIPT NEM NO HTML ATÉ EU LEMBRAR O QUE FAZERKKKKKKKKKK
@@ -7,11 +8,18 @@ const statusElement = document.getElementById('status-code');
 const serverElement = document.getElementById('server-state');
 
 window.addEventListener('mousemove', () => {
-    if (isOffline) return; // Se já caiu, para de contar
+    // Busca a tela de intro
+    const intro = document.getElementById('intro-screen');
+
+    // SÓ CONTA SE: 
+    // 1. O servidor NÃO caiu (isOffline é falso)
+    // 2. A tela de intro JÁ FOI escondida (tem a classe 'hidden')
+    if (isOffline || !intro.classList.contains('hidden')) {
+        return; 
+    }
 
     mouseMoves++;
 
-    // Se mexer o mouse mais de 200 vezes (ajuste esse número se quiser)
     if (mouseMoves > 200) {
         cairServidor();
     }
@@ -90,33 +98,21 @@ function fecharConfigs() {
 function mudarTema() {
     const tema = document.getElementById('theme-selector').value;
     const body = document.body;
-
-    if (tema === 'purple') {
-        body.style.backgroundColor = '#2d1b4e';
-        body.style.color = '#e0b3ff';
-        // Você pode adicionar mais mudanças de cores aqui
-    } else if (tema === 'dark') {
-        body.style.backgroundColor = '#0d1117';
-        body.style.color = '#c9d1d9';
-    } else {
-        body.style.backgroundColor = '#F0F4F8';
-        body.style.color = '#102A43';
-    }
-}
-
-function mudarTema() {
-    const tema = document.getElementById('theme-selector').value;
-    const body = document.body;
     const terminal = document.getElementById('terminal');
+    const headerTitle = document.querySelector('header h1'); // Seleciona o título principal
 
     if (tema === 'purple') {
         // TEMA CYBER PURPLE
         body.style.backgroundColor = '#2d1b4e';
         body.style.color = '#e0b3ff';
         
-        terminal.style.backgroundColor = '#1a0b2e'; // Roxo mais profundo
-        terminal.style.borderColor = '#00f3ff';     // Borda Ciano (Neon)
+        terminal.style.backgroundColor = '#1a0b2e';
+        terminal.style.borderColor = '#00f3ff';
         terminal.style.color = '#00f3ff';
+
+        // Destaque Vibrante para o Título no Roxo
+        headerTitle.style.color = '#00f3ff'; // Ciano Neon
+        headerTitle.style.textShadow = "0 0 15px #00f3ff";
         
     } else if (tema === 'dark') {
         // TEMA DEEP MODE (Preto)
@@ -124,8 +120,12 @@ function mudarTema() {
         body.style.color = '#c9d1d9';
         
         terminal.style.backgroundColor = '#161b22';
-        terminal.style.borderColor = '#f0883e';     // Laranja (tipo as notificações do Watch Dogs)
+        terminal.style.borderColor = '#f0883e';
         terminal.style.color = '#f0883e';
+
+        // Destaque Vibrante para o Título no Preto
+        headerTitle.style.color = '#f0883e'; // Laranja Hacker
+        headerTitle.style.textShadow = "0 0 15px #f0883e";
         
     } else {
         // TEMA OCEAN (Padrão claro)
@@ -133,8 +133,12 @@ function mudarTema() {
         body.style.color = '#102A43';
         
         terminal.style.backgroundColor = '#243B53';
-        terminal.style.borderColor = '#48BB78';     // Verde Online
+        terminal.style.borderColor = '#48BB78';
         terminal.style.color = '#BCCCDC';
+
+        // Cor original para o tema claro
+        headerTitle.style.color = '#102A43';
+        headerTitle.style.textShadow = "none";
     }
 }
 

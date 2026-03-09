@@ -401,3 +401,26 @@ button {
     font-size: 1.5rem;
     letter-spacing: 3px;
 }
+
+header h1 {
+    transition: all 0.5s ease; /* Faz a cor e o brilho mudarem suavemente */
+    text-align: center;
+    padding: 20px;
+}
+
+:root {
+    --bg-color: #F0F4F8;
+    --text-color: #102A43;
+    --accent-color: #48BB78; /* A cor do seu destaque */
+    --box-bg: #ffffff;
+}
+
+/* Agora use essas variáveis nos seus blocos */
+section {
+    background-color: var(--box-bg);
+    color: var(--text-color);
+    border-left: 5px solid var(--accent-color);
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: all 0.5s ease; /* Transição suave para tudo */
+}
