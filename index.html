@@ -26,6 +26,7 @@
             <p>Sistema de Protocolos HTTP/HTTPS v1.0</p>
             <div class="menu-buttons">
                 <button onclick="iniciarSite()">[ INICIAR_SESSÃO ]</button>
+                <button onclick="printDevtools()">[ PRINT DEV_TOOLS ]</button>
                 <button onclick="abrirConfigs()">[ CONFIGURAÇÕES ]</button>
             </div>
         </div>
@@ -60,6 +61,25 @@
             <h2 id="titulo-creditos"></h2>
             <div id="lista-creditos"></div>
             <button onclick="fecharCreditos()" class="btn-close">FECHAR_</button>
+        </div>
+    </div>
+
+    <div id="devtools-screen" class="hidden">
+        <button class="btn-voltar-fixo" onclick="voltarParaIntroDev()">SAIR_X</button>
+        
+        <div class="intro-content">
+            <h2 class="glitch">NETWORK_DEBUG_INFO</h2>
+            <div class="section-explanation">
+                <p><strong>> MÉTODO (GET):</strong> É o pedido de leitura. O navegador solicita os dados ao servidor para exibir a página.</p>
+                <p><strong>> STATUS (200):</strong> Significa 'OK'. O servidor encontrou o que você pediu e entregou com sucesso.</p>
+                <p><strong>> URL:</strong> É o endereço digital (o caminho) de onde o recurso está vindo.</p>
+            </div>
+            
+            <div class="terminal-mini" style="margin-top: 20px; border: 1px solid #48BB78; padding: 10px; font-family: monospace;">
+                <p style="color: #48BB78;">[LOG]: Requesting Google.com...</p>
+                <p style="color: #48BB78;">[RES]: HTTP/1.1 200 OK</p>
+                <p style="color: #48BB78;">[RES]: Method: GET</p>
+            </div>
         </div>
     </div>
 

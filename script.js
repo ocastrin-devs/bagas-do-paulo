@@ -1,4 +1,4 @@
-console.log("Ficou uma bosta");
+PARconsole.log("Ficou uma bosta");
 console.warn("ACESSO RESTRITO: Perfil do Administrador Retr0 carregado.");
 let mouseMoves = 0;
 let isOffline = false;
@@ -8,13 +8,14 @@ const statusElement = document.getElementById('status-code');
 const serverElement = document.getElementById('server-state');
 
 window.addEventListener('mousemove', () => {
-    // Busca a tela de intro
     const intro = document.getElementById('intro-screen');
+    const devScreen = document.getElementById('devtools-screen');
 
     // SÓ CONTA SE: 
-    // 1. O servidor NÃO caiu (isOffline é falso)
-    // 2. A tela de intro JÁ FOI escondida (tem a classe 'hidden')
-    if (isOffline || !intro.classList.contains('hidden')) {
+    // 1. O servidor NÃO caiu
+    // 2. A intro está escondida
+    // 3. A tela de DevTools NÃO está aberta
+    if (isOffline || !intro.classList.contains('hidden') || !devScreen.classList.contains('hidden')) {
         return; 
     }
 
@@ -77,14 +78,6 @@ function verificarResposta(tipo) {
         feedback.innerHTML = `❌ Quase lá! Tente usar palavras como: <strong>${palavrasChave.join(', ')}</strong>.<br><br>💡 Conceito real: ${explicacaoCorreta}`;
         feedback.style.color = "#ff4d4d";
     }
-}
-
-function iniciarSite() {
-    const intro = document.getElementById('intro-screen');
-    intro.style.opacity = '0';
-    setTimeout(() => {
-        intro.classList.add('hidden');
-    }, 800);
 }
 
 function abrirConfigs() {
@@ -194,16 +187,7 @@ function fecharAoClicarFora(event) {
     }
 }
 
-// Botão para voltar para a Intro
-function voltarParaIntro() {
-    fecharConfigs(); // Fecha o painel primeiro
-    const intro = document.getElementById('intro-screen');
-    intro.classList.remove('hidden'); // Faz a intro aparecer
-    setTimeout(() => {
-        intro.style.opacity = '1'; // Suaviza a volta da intro
-    }, 10);
-}
-
+// --- CONTROLE DE TELAS (INTRO / TRABALHO) ---
 function iniciarSite() {
     const intro = document.getElementById('intro-screen');
     const btnConfig = document.getElementById('btn-config-flutuante');
@@ -211,16 +195,42 @@ function iniciarSite() {
     intro.style.opacity = '0';
     setTimeout(() => {
         intro.classList.add('hidden');
-        btnConfig.classList.remove('hidden'); // O botão de engrenagem aparece aqui!
+        btnConfig.classList.remove('hidden'); 
+        mouseMoves = 0; 
+        isOffline = false;
     }, 800);
 }
 
+// Botão SAIR dentro das configurações
 function voltarParaIntro() {
     fecharConfigs();
     const intro = document.getElementById('intro-screen');
     const btnConfig = document.getElementById('btn-config-flutuante');
     
-    btnConfig.classList.add('hidden'); // Esconde a engrenagem ao voltar pra intro
+    btnConfig.classList.add('hidden');
+    intro.classList.remove('hidden');
+    setTimeout(() => {
+        intro.style.opacity = '1';
+    }, 10);
+}
+
+// --- CONTROLE DO DEVTOOLS SCREEN ---
+function printDevtools() {
+    const intro = document.getElementById('intro-screen');
+    const devScreen = document.getElementById('devtools-screen');
+    const btnConfig = document.getElementById('btn-config-flutuante');
+
+    intro.classList.add('hidden');
+    btnConfig.classList.add('hidden');
+    devScreen.classList.remove('hidden');
+}
+
+// Botão SAIR_X dentro da tela de explicação do DevTools
+function voltarParaIntroDev() {
+    const intro = document.getElementById('intro-screen');
+    const devScreen = document.getElementById('devtools-screen');
+
+    devScreen.classList.add('hidden');
     intro.classList.remove('hidden');
     setTimeout(() => {
         intro.style.opacity = '1';
@@ -283,7 +293,7 @@ function mostrarMenuDinamico(tipo) {
         lista.innerHTML = "<p>> MARCUS (RETR0)</p><p>> DEVELOPER & STUDENT</p>"; //
     } else {
         titulo.innerText = "NETWORK_COLABORATORS";
-        lista.innerHTML = "<p>> PARCEIRO_01</p><p>> PARCEIRO_02</p>";
+        lista.innerHTML = "<p>> 𝐇𝐄𝐈𝐓𝐎𝐑</p><p>> 𝐋𝐔𝐂𝐀𝐒 𝐌.</p><p>> 𝐌𝐀𝐓𝐇𝐄𝐔𝐒 𝐌𝐀.</p><p>> 𝐂𝐀𝐑𝐋𝐎𝐒 𝐄.</p>";
     }
 }
 
