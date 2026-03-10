@@ -1,4 +1,4 @@
-PARconsole.log("Ficou uma bosta");
+console.log("Ficou uma bosta");
 console.warn("ACESSO RESTRITO: Perfil do Administrador Retr0 carregado.");
 let mouseMoves = 0;
 let isOffline = false;
@@ -201,20 +201,6 @@ function iniciarSite() {
     }, 800);
 }
 
-// Botão SAIR dentro das configurações
-function voltarParaIntro() {
-    fecharConfigs();
-    const intro = document.getElementById('intro-screen');
-    const btnConfig = document.getElementById('btn-config-flutuante');
-    
-    btnConfig.classList.add('hidden');
-    intro.classList.remove('hidden');
-    setTimeout(() => {
-        intro.style.opacity = '1';
-    }, 10);
-}
-
-// --- CONTROLE DO DEVTOOLS SCREEN ---
 function printDevtools() {
     const intro = document.getElementById('intro-screen');
     const devScreen = document.getElementById('devtools-screen');
@@ -231,6 +217,19 @@ function voltarParaIntroDev() {
     const devScreen = document.getElementById('devtools-screen');
 
     devScreen.classList.add('hidden');
+    intro.classList.remove('hidden');
+    setTimeout(() => {
+        intro.style.opacity = '1';
+    }, 10);
+}
+
+// Botão SAIR dentro das configurações
+function voltarParaIntro() {
+    fecharConfigs();
+    const intro = document.getElementById('intro-screen');
+    const btnConfig = document.getElementById('btn-config-flutuante');
+    
+    btnConfig.classList.add('hidden');
     intro.classList.remove('hidden');
     setTimeout(() => {
         intro.style.opacity = '1';
